@@ -12,14 +12,15 @@ import {expect} from 'chai';
 describe('Recording', () => {
   it('renders a list of records', () => {
     const records = List.of(
-      Map({'id':'A001', 'start':'2017-09-09T10:10:15', 'finish':null, 'type':'foo', 'count':10}),
-      Map({'id':'A002', 'start':'2017-09-09T10:10:15', 'finish':null, 'type':'bar', 'count':10})
+      Map({'recordId':'A001', 'recordType':'foo'}),
+      Map({'recordId':'A002', 'recordType':'bar'})
     );
     const component = renderIntoDocument(
       <Recording records={records} />
     );
     const recordsRender = scryRenderedDOMComponentsWithClass(component, 'testClassName');
     const [foo, bar] = recordsRender.map(e => e.textContent);
+    // console.log(recordsRender.map(e => e.textContent));
 
     expect(foo).to.contain('foo');
     expect(bar).to.contain('bar');
