@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory} from 'react-router';
+import {BrowserRouter, Route} from 'react-router-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
 import reducer from './reducer';
 import {setState} from './action_creators';
 import remoteActionMiddleware from './remote_action_middleware';
-import App from './components/App';
 import {RecordingContainer} from './components/Recording';
-
 
 
 const socket = io('http://practice-tracking-server.herokuapp.com');
@@ -23,13 +21,13 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 const store = createStoreWithMiddleware(reducer);
 
-const routes = <Route component={App}>
-  <Route path="/" component={RecordingContainer} />
-</Route>;
-
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>{routes}</Router>
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={RecordingContainer} />
+      </div>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('app')
 );
