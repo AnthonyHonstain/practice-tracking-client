@@ -10,7 +10,8 @@ import remoteActionMiddleware from './remote_action_middleware';
 import {RecordingContainer} from './components/Recording';
 
 
-const socket = io('http://practice-tracking-server.herokuapp.com');
+//const socket = io('http://practice-tracking-server.herokuapp.com');
+const socket = io('localhost:8090');
 socket.on('state', state =>
   store.dispatch(setState(state))
 );
