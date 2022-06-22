@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "immutable": "^3.8.2",
-    "jsdom": "^11.3.0",
+    "jsdom": "^16.5.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
